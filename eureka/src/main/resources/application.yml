@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: eureka
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: instance-1
+server:
+  port: 8761
+eureka:
+  client:
+    service-url:
+      default-zone:
+        - http://localhost:8762/eureka
+        - http://localhost:8763/eureka
+---
+spring:
+  config:
+    activate:
+      on-profile: instance-2
+server:
+  port: 8762
+eureka:
+  client:
+    service-url:
+      default-zone:
+        - http://localhost:8761/eureka
+        - http://localhost:8763/eureka
+---
+spring:
+  config:
+    activate:
+      on-profile: instance-3
+server:
+  port: 8763
+eureka:
+  client:
+    service-url:
+      default-zone:
+        - http://localhost:8761/eureka
+        - http://localhost:8762/eureka

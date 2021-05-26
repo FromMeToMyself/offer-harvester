@@ -1,0 +1,13 @@
+
+allprojects {
+    group 'online.stringtek.cloud'
+    version '0.0.1-SNAPSHOT'
+    apply from: "${rootDir}/dependency.gradle"
+}
+subprojects {
+
+    repositories {
+        mavenCentral()
+    }
+
+}
